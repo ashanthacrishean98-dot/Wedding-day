@@ -1,143 +1,168 @@
-```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>Homecoming Invitation</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville&family=Playfair+Display&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville&display=swap" rel="stylesheet">
 
 <style>
 
-body {
-    margin: 0;
-    font-family: "Libre Baskerville", serif;
-    background: #000;
-    color: #c2a15f;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 100vh;
+body{
+    margin:0;
+    font-family:"Georgia",serif;
+    background:#000;
+    color:#c2a15f;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    min-height:100vh;
 }
 
 /* COVER SCREEN */
 
-.cover {
-    position: fixed;
-    inset: 0;
-    background: #000;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    cursor: pointer;
-    z-index: 10;
+.cover{
+    position:fixed;
+    inset:0;
+    background:#000;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    cursor:pointer;
+    z-index:10;
 }
 
-.cover img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
+.cover img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
 }
 
-.cover-text {
-    position: absolute;
-    bottom: 40px;
-    color: #fff;
-    font-size: 16px;
-    letter-spacing: 1px;
-    background: rgba(0,0,0,0.4);
-    padding: 12px 24px;
+.cover-text{
+    position:absolute;
+    bottom:40px;
+    color:#fff;
+    font-size:16px;
+    letter-spacing:1px;
+    background:rgba(0,0,0,0.5);
+    padding:12px 24px;
 }
 
-.cover.fade-out {
-    opacity: 0;
-    transition: opacity 1.5s ease;
-    pointer-events: none;
+.cover.fade-out{
+    opacity:0;
+    transition:opacity 1.5s ease;
+    pointer-events:none;
 }
 
 /* CARD */
 
-.card {
-    display: none;
-    max-width: 600px;
-    background: #0f0f0f;
-    padding: 60px 45px;
-    text-align: center;
-    border: 1px solid #c2a15f;
-    box-shadow: 0 0 40px rgba(194,161,95,0.25);
-    opacity: 0;
-    position: relative;
-    animation: fadeIn 3s forwards;
+.card{
+    display:none;
+    max-width:600px;
+    background:#0b0b0b;
+    padding:40px 30px;
+    text-align:center;
+    border:1px solid #c2a15f;
+    box-shadow:0 0 60px rgba(194,161,95,0.25);
+    opacity:0;
+    animation:fadeIn 3s forwards,candleGlow 4s infinite alternate;
 }
 
-@keyframes fadeIn {
-    0% {opacity:0; transform:scale(0.9);}
-    100% {opacity:1; transform:scale(1);}
+@keyframes fadeIn{
+    0%{opacity:0;transform:scale(0.9);}
+    100%{opacity:1;transform:scale(1);}
 }
 
-.fade-section {
-    opacity: 0;
-    transform: translateY(20px);
-    animation: sectionFade 2s forwards;
+@keyframes candleGlow{
+    from{box-shadow:0 0 40px rgba(194,161,95,0.2);}
+    to{box-shadow:0 0 80px rgba(194,161,95,0.45);}
 }
 
-@keyframes sectionFade {
-    to {opacity:1; transform:translateY(0);}
+.fade-section{
+    opacity:0;
+    transform:translateY(20px);
+    animation:sectionFade 2s forwards;
 }
 
-.divider {
-    width: 60px;
-    height: 2px;
-    background: #c2a15f;
-    margin: 20px auto;
+@keyframes sectionFade{
+    to{opacity:1;transform:translateY(0);}
 }
 
-.names {
-    font-family: "Playfair Display", serif;
-    font-size: 34px;
-    margin: 25px 0;
+/* GOLD DIVIDER */
+
+.divider{
+    width:80px;
+    height:2px;
+    background:linear-gradient(90deg,#c2a15f,#d4af37,#c2a15f);
+    margin:25px auto;
+    opacity:0;
+    animation:dividerFade 2s forwards,glowLine 3s infinite alternate;
 }
 
-.date {
-    font-size: 18px;
-    margin: 20px 0;
+@keyframes dividerFade{
+    to{opacity:1;}
 }
 
-h2 {
-    font-family: "Playfair Display", serif;
-    font-size: 22px;
-    font-weight: normal;
+@keyframes glowLine{
+    from{box-shadow:0 0 5px rgba(212,175,55,0.4);}
+    to{box-shadow:0 0 18px rgba(212,175,55,0.9);}
 }
 
-p {
-    font-size: 16px;
-    line-height: 1.7;
+h2{
+    font-size:20px;
+    font-weight:normal;
+    margin:20px 0 10px;
 }
 
-.footer {
-    margin-top: 30px;
-    font-size: 14px;
+p{
+    font-family:'Libre Baskerville',serif;
+    font-size:16px;
+    line-height:1.6;
+    margin:10px 0;
 }
 
-
-
-/* TOP AND FOOTER DECORATIONS */
-
-.top-decoration {
-    width: 90px;
-    margin: 0 auto 20px;
+.names{
+    font-size:30px;
+    margin:20px 0;
+    color:#d4af37;
 }
 
-.footer-decoration {
-    width: 90px;
-    margin: 25px auto 10px;
+.date{
+    font-family:'Libre Baskerville',serif;
+    font-size:18px;
+    letter-spacing:1px;
+    margin:20px 0;
 }
 
-a {
-    color: #c2a15f;
-    text-decoration: none;
-    border-bottom: 1px solid #c2a15f;
+.footer{
+    margin-top:30px;
+    font-size:14px;
+    color:#c2a15f;
+}
+
+a{
+    color:#d4af37;
+    text-decoration:none;
+    border-bottom:1px solid #c2a15f;
+}
+
+/* GOLD DUST BACKGROUND */
+
+.gold-dust{
+    position:fixed;
+    inset:0;
+    pointer-events:none;
+    background-image:radial-gradient(#d4af37 1px,transparent 1px);
+    background-size:60px 60px;
+    opacity:0.15;
+    animation:dustMove 40s linear infinite;
+}
+
+@keyframes dustMove{
+    from{transform:translateY(0);}
+    to{transform:translateY(-200px);}
 }
 
 </style>
@@ -151,10 +176,10 @@ a {
 <source src="wedding-music.mpeg" type="audio/mpeg">
 </audio>
 
-<!-- COVER SCREEN -->
+<!-- COVER -->
 
 <div class="cover" id="cover">
-<img src="Custom Card1.jpg">
+<img src="Custom Card1.png" alt="Invitation Cover">
 <div class="cover-text">Tap to Open Invitation</div>
 </div>
 
@@ -162,67 +187,63 @@ a {
 
 <div class="card" id="invitationCard">
 
-
-<img src="floral-top.png" class="top-decoration">
-
 <p class="fade-section" style="animation-delay:0.5s;">
-With joyful hearts we invite you to celebrate
+With the blessings of our parents
 </p>
 
+<div class="divider" style="animation-delay:1s;"></div>
+
 <div class="names fade-section" style="animation-delay:1.5s;">
-Crishean <br>&<br> Dinithi
+Crishean <br>&amp;<br> Dinithi
 </div>
 
 <p class="fade-section" style="animation-delay:2s;">
-at our
+joyfully invite you to celebrate our homecoming reception
 </p>
 
-<h2 class="fade-section" style="animation-delay:2.5s;">
-Homecoming Celebration
-</h2>
-
-<div class="divider"></div>
+<div class="divider" style="animation-delay:2.5s;"></div>
 
 <div class="date fade-section" style="animation-delay:3s;">
-Wednesday, 20th May 2026
+Wednesday, 20th May 2026<br>
+at 7.00 in the evening
 </div>
 
-<p class="fade-section" style="animation-delay:3.5s;">
-The Grand Ballroom <br>
+<h2 class="fade-section" style="animation-delay:3.5s;">
+Homecoming Reception
+</h2>
+
+<p class="fade-section" style="animation-delay:4s;">
+The Grand Ballroom<br>
 Colombo
 </p>
 
-<p class="fade-section" style="animation-delay:4s;">
-7.00 in the evening onwards
-</p>
+<div class="divider" style="animation-delay:4.5s;"></div>
 
-<div class="divider"></div>
-
-<p class="fade-section" style="animation-delay:4.5s;">
+<p class="fade-section" style="animation-delay:5s;">
 <a href="https://maps.app.goo.gl/X3GXXFcj5q9gLPss8" target="_blank">
 View Location on Google Maps
 </a>
 </p>
 
-<img src="floral-bottom.png" class="footer-decoration">
-
-<div class="footer fade-section" style="animation-delay:5s;">
-We look forward to celebrating this special evening with you
+<div class="footer fade-section" style="animation-delay:5.5s;">
+We look forward to celebrating with you
 </div>
 
 </div>
+
+<div class="gold-dust"></div>
 
 <script>
 
-const cover = document.getElementById('cover');
-const card = document.getElementById('invitationCard');
-const music = document.getElementById('bgMusic');
+const cover=document.getElementById('cover');
+const card=document.getElementById('invitationCard');
+const music=document.getElementById('bgMusic');
 
-cover.addEventListener('click', () => {
+cover.addEventListener('click',()=>{
 
 cover.classList.add('fade-out');
 
-setTimeout(() => {
+setTimeout(()=>{
 
 cover.style.display='none';
 card.style.display='block';
@@ -230,8 +251,8 @@ card.style.display='block';
 music.play().catch(()=>{});
 
 document.querySelectorAll('.fade-section').forEach(el=>{
-const delay = el.style.animationDelay;
-el.style.animation = `sectionFade 2s forwards ${delay}`;
+const delay=el.style.animationDelay;
+el.style.animation=`sectionFade 2s forwards ${delay}`;
 });
 
 },1200);
@@ -242,4 +263,3 @@ el.style.animation = `sectionFade 2s forwards ${delay}`;
 
 </body>
 </html>
-```
