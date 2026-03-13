@@ -1,117 +1,261 @@
+```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>Wedding Invitation | Dinithi & Crishean</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Homecoming Invitation</title>
 
-    <style>
-        body {
-            margin: 0;
-            padding: 0;
-            background-color: #f8f6f2;
-            font-family: "Times New Roman", Georgia, serif;
-            color: #2b2b2b;
-        }
+<link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville&family=Playfair+Display&display=swap" rel="stylesheet">
 
-        .card {
-            max-width: 700px;
-            margin: 40px auto;
-            padding: 40px 30px;
-            background-color: #ffffff;
-            text-align: center;
-            border: 1px solid #ddd;
-        }
+<style>
 
-        h1 {
-            font-size: 28px;
-            letter-spacing: 2px;
-            margin-bottom: 30px;
-        }
+body {
+    margin: 0;
+    font-family: "Libre Baskerville", serif;
+    background: #000;
+    color: #c2a15f;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
 
-        .parents {
-            font-size: 16px;
-            line-height: 1.6;
-            margin-bottom: 30px;
-        }
+/* COVER SCREEN */
 
-        .names {
-            font-size: 22px;
-            font-weight: bold;
-            margin-top: 20px;
-        }
+.cover {
+    position: fixed;
+    inset: 0;
+    background: #000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    z-index: 10;
+}
 
-        .details {
-            font-size: 16px;
-            line-height: 1.8;
-            margin-top: 25px;
-        }
+.cover img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
 
-        .section-title {
-            font-weight: bold;
-            margin-top: 25px;
-        }
+.cover-text {
+    position: absolute;
+    bottom: 40px;
+    color: #fff;
+    font-size: 16px;
+    letter-spacing: 1px;
+    background: rgba(0,0,0,0.4);
+    padding: 12px 24px;
+}
 
-        .footer {
-            margin-top: 40px;
-            font-size: 15px;
-            font-style: italic;
-        }
-    </style>
+.cover.fade-out {
+    opacity: 0;
+    transition: opacity 1.5s ease;
+    pointer-events: none;
+}
+
+/* CARD */
+
+.card {
+    display: none;
+    max-width: 600px;
+    background: #0f0f0f;
+    padding: 60px 45px;
+    text-align: center;
+    border: 1px solid #c2a15f;
+    box-shadow: 0 0 40px rgba(194,161,95,0.25);
+    opacity: 0;
+    position: relative;
+    animation: fadeIn 3s forwards;
+}
+
+@keyframes fadeIn {
+    0% {opacity:0; transform:scale(0.9);}
+    100% {opacity:1; transform:scale(1);}
+}
+
+.fade-section {
+    opacity: 0;
+    transform: translateY(20px);
+    animation: sectionFade 2s forwards;
+}
+
+@keyframes sectionFade {
+    to {opacity:1; transform:translateY(0);}
+}
+
+.divider {
+    width: 60px;
+    height: 2px;
+    background: #c2a15f;
+    margin: 20px auto;
+}
+
+.names {
+    font-family: "Playfair Display", serif;
+    font-size: 34px;
+    margin: 25px 0;
+}
+
+.date {
+    font-size: 18px;
+    margin: 20px 0;
+}
+
+h2 {
+    font-family: "Playfair Display", serif;
+    font-size: 22px;
+    font-weight: normal;
+}
+
+p {
+    font-size: 16px;
+    line-height: 1.7;
+}
+
+.footer {
+    margin-top: 30px;
+    font-size: 14px;
+}
+
+/* FLORAL CORNERS */
+
+.flower-top {
+    position: absolute;
+    top: -25px;
+    left: -25px;
+    width: 130px;
+}
+
+.flower-bottom {
+    position: absolute;
+    bottom: -25px;
+    right: -25px;
+    width: 130px;
+}
+
+/* TOP AND FOOTER DECORATIONS */
+
+.top-decoration {
+    width: 90px;
+    margin: 0 auto 20px;
+}
+
+.footer-decoration {
+    width: 90px;
+    margin: 25px auto 10px;
+}
+
+a {
+    color: #c2a15f;
+    text-decoration: none;
+    border-bottom: 1px solid #c2a15f;
+}
+
+</style>
 </head>
+
 <body>
 
-    <div class="card">
+<!-- BACKGROUND MUSIC -->
 
-        <h1>WEDDING INVITATION</h1>
+<audio id="bgMusic" loop>
+<source src="wedding-music.mpeg" type="audio/mpeg">
+</audio>
 
-        <div class="parents">
-            Mr. Nelson Miral and Mrs. Kumari Miral<br>
-            and<br>
-            Mr. Lucian Anthony and Mrs. Maire Perera
-        </div>
+<!-- COVER SCREEN -->
 
-        <div class="names">
-            Dinithi Miral
-        </div>
-        <div>
-            Daughter of Mr. Nelson Miral and Mrs. Kumari Miral
-        </div>
+<div class="cover" id="cover">
+<img src="cover-photo.png">
+<div class="cover-text">Tap to Open Invitation</div>
+</div>
 
-        <br>
+<!-- INVITATION CARD -->
 
-        <div class="names">
-            Crishean Anthony
-        </div>
-        <div>
-            Son of Mr. Lucian Anthony and Mrs. Maire Perera
-        </div>
+<div class="card" id="invitationCard">
 
-        <div class="details">
-            joyfully invite you to celebrate the sacrament of our marriage.
-        </div>
+<img src="flower-top.png" class="flower-top">
+<img src="flower-bottom.png" class="flower-bottom">
 
-        <div class="details">
-            <div class="section-title">Date</div>
-            Saturday, 16th May 2026
+<img src="floral-top.png" class="top-decoration">
 
-            <div class="section-title">Time</div>
-            9.30 a.m.
+<p class="fade-section" style="animation-delay:0.5s;">
+With joyful hearts we invite you to celebrate
+</p>
 
-            <div class="section-title">Venue</div>
-            St. Sylvester Church<br>
-            Ettukala, Negombo<br>
-            (6RPV+CH5, Ettukala Road, Negombo 11500)
+<div class="names fade-section" style="animation-delay:1.5s;">
+Crishean <br>&<br> Dinithi
+</div>
 
-            <div class="section-title">Reception</div>
-            Golden Star Hotel – Negombo
-        </div>
+<p class="fade-section" style="animation-delay:2s;">
+at our
+</p>
 
-        <div class="footer">
-            We look forward to your prayers and presence.
-        </div>
+<h2 class="fade-section" style="animation-delay:2.5s;">
+Homecoming Celebration
+</h2>
 
-    </div>
+<div class="divider"></div>
+
+<div class="date fade-section" style="animation-delay:3s;">
+Wednesday, 20th May 2026
+</div>
+
+<p class="fade-section" style="animation-delay:3.5s;">
+The Grand Ballroom <br>
+Colombo
+</p>
+
+<p class="fade-section" style="animation-delay:4s;">
+7.00 in the evening onwards
+</p>
+
+<div class="divider"></div>
+
+<p class="fade-section" style="animation-delay:4.5s;">
+<a href="https://maps.app.goo.gl/X3GXXFcj5q9gLPss8" target="_blank">
+View Location on Google Maps
+</a>
+</p>
+
+<img src="floral-bottom.png" class="footer-decoration">
+
+<div class="footer fade-section" style="animation-delay:5s;">
+We look forward to celebrating this special evening with you
+</div>
+
+</div>
+
+<script>
+
+const cover = document.getElementById('cover');
+const card = document.getElementById('invitationCard');
+const music = document.getElementById('bgMusic');
+
+cover.addEventListener('click', () => {
+
+cover.classList.add('fade-out');
+
+setTimeout(() => {
+
+cover.style.display='none';
+card.style.display='block';
+
+music.play().catch(()=>{});
+
+document.querySelectorAll('.fade-section').forEach(el=>{
+const delay = el.style.animationDelay;
+el.style.animation = `sectionFade 2s forwards ${delay}`;
+});
+
+},1200);
+
+});
+
+</script>
 
 </body>
 </html>
+```
