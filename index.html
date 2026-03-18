@@ -8,15 +8,12 @@
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500&family=Libre+Baskerville&display=swap" rel="stylesheet">
 
 <style>
+
 body {
     margin: 0;
     font-family: "Libre Baskerville", serif;
-    color: #e6c77b;
-
-    /* BLACK & GOLD BACKGROUND */
-    background: 
-        linear-gradient(rgba(0,0,0,0.88), rgba(0,0,0,0.95)),
-        url('https://www.transparenttextures.com/patterns/black-linen.png');
+    background: linear-gradient(135deg, #000000, #1a1a1a, #000000);
+    color: #FFD700;
 }
 
 /* COVER */
@@ -42,11 +39,12 @@ body {
     bottom: 30px;
     left: 50%;
     transform: translateX(-50%);
-    color: #e6c77b;
+    color: #FFD700;
     font-size: 14px;
-    background: rgba(0,0,0,0.5);
+    background: rgba(0,0,0,0.6);
     padding: 10px 20px;
     border-radius: 25px;
+    border: 1px solid #FFD700;
 }
 
 /* MAIN CONTENT */
@@ -57,17 +55,18 @@ body {
     text-align: center;
 }
 
-/* TEXT */
+/* TEXT STYLES */
 .names {
     font-family: "Playfair Display", serif;
-    font-size: 32px;
-    color: #f5d27a;
-    margin: 20px 0;
+    font-size: 34px;
+    color: #FFD700;
+    margin: 25px 0;
+    letter-spacing: 1px;
 }
 
 h2 {
     font-family: "Playfair Display", serif;
-    color: #f5d27a;
+    color: #FFD700;
     font-weight: 500;
     margin-top: 35px;
     margin-bottom: 10px;
@@ -76,14 +75,15 @@ h2 {
 p {
     font-size: 15px;
     line-height: 1.8;
-    margin: 10px 0;
+    margin: 12px 0;
+    color: #FFD700;
 }
 
 /* DIVIDER */
 .divider {
-    width: 60px;
+    width: 70px;
     height: 2px;
-    background: linear-gradient(to right, transparent, #f5d27a, transparent);
+    background: #FFD700;
     margin: 25px auto;
 }
 
@@ -92,18 +92,31 @@ iframe {
     width: 100%;
     height: 260px;
     margin-top: 15px;
-    border: 0;
+    border: 2px solid #FFD700;
 }
 
 /* LINK */
 a {
-    color: #f5d27a;
+    color: #FFD700;
     text-decoration: none;
-    border-bottom: 1px solid #f5d27a;
+    border-bottom: 1px solid #FFD700;
+}
+
+/* ANIMATION */
+.fade {
+    opacity: 0;
+    transform: translateY(40px);
+    transition: all 2s ease;
+}
+
+.show {
+    opacity: 1;
+    transform: translateY(0);
 }
 
 /* MOBILE */
 @media (max-width: 600px) {
+
     .names {
         font-size: 26px;
     }
@@ -121,17 +134,6 @@ a {
     }
 }
 
-/* SCROLL ANIMATION (UPWARD + FADE) */
-.fade {
-    opacity: 0;
-    transform: translateY(40px);
-    transition: all 1.2s ease;
-}
-
-.show {
-    opacity: 1;
-    transform: translateY(0);
-}
 </style>
 </head>
 
@@ -139,19 +141,19 @@ a {
 
 <!-- MUSIC -->
 <audio id="bgMusic" loop>
-    <source src="homecoming-music.mpeg" type="audio/mpeg">
+    <source src="wedding-music.mpeg" type="audio/mpeg">
 </audio>
 
 <!-- COVER -->
 <div class="cover" id="cover">
-    <img src="Homecoming Cover.jpg" alt="Homecoming Cover">
+    <img src="Custom Card.jpg" alt="Homecoming Cover">
     <div class="cover-text">Tap to Open Invitation</div>
 </div>
 
 <!-- CONTENT -->
 <div class="container">
 
-    <p class="fade">With gratitude and joy</p>
+    <p class="fade">With the blessings of our parents</p>
 
     <div class="divider fade"></div>
 
@@ -160,20 +162,20 @@ a {
     </div>
 
     <p class="fade">
-        invite you to celebrate our homecoming
+        cordially invite you to celebrate our Homecoming
     </p>
 
     <div class="divider fade"></div>
 
     <h2 class="fade">Homecoming Celebration</h2>
     <p class="fade">
-        Wednesday, 20th May 2026 <br>
-        Evening Reception
+        Monday, 20th May 2026 <br>
+        at 6.30 in the evening
     </p>
 
     <h2 class="fade">Venue</h2>
     <p class="fade">
-        Your Reception Hall Name <br>
+        The Grand Ballroom <br>
         Colombo
     </p>
 
@@ -186,18 +188,19 @@ a {
     </iframe>
 
     <p class="fade">
-        <a href="#" target="_blank">
+        <a href="https://maps.app.goo.gl/" target="_blank">
             View on Google Maps
         </a>
     </p>
 
-    <p class="fade" style="margin-top:20px;">
-        Your presence will complete our celebration
+    <p class="fade" style="margin-top:25px;">
+        We look forward to your presence and blessings
     </p>
 
 </div>
 
 <script>
+
 const cover = document.getElementById('cover');
 const music = document.getElementById('bgMusic');
 
@@ -217,11 +220,12 @@ const observer = new IntersectionObserver(entries => {
             entry.target.classList.add("show");
         }
     });
-}, { threshold: 0.2 });
+});
 
 document.querySelectorAll('.fade').forEach(el => {
     observer.observe(el);
 });
+
 </script>
 
 </body>
