@@ -11,10 +11,12 @@
 body {
     margin: 0;
     font-family: "Libre Baskerville", serif;
-    color: #f5d27a;
+    color: #e6c77b;
 
-    /* Jet black elegant background */
-    background: radial-gradient(circle at center, #0a0a0a 0%, #000000 100%);
+    /* BLACK & GOLD BACKGROUND */
+    background: 
+        linear-gradient(rgba(0,0,0,0.88), rgba(0,0,0,0.95)),
+        url('https://www.transparenttextures.com/patterns/black-linen.png');
 }
 
 /* COVER */
@@ -40,55 +42,49 @@ body {
     bottom: 30px;
     left: 50%;
     transform: translateX(-50%);
-    color: #f5d27a;
+    color: #e6c77b;
     font-size: 14px;
     background: rgba(0,0,0,0.5);
     padding: 10px 20px;
     border-radius: 25px;
-    border: 1px solid #f5d27a;
 }
 
 /* MAIN CONTENT */
 .container {
     max-width: 600px;
     margin: auto;
-    padding: 40px 20px;
+    padding: 50px 20px;
     text-align: center;
 }
 
-/* TEXT STYLES */
+/* TEXT */
 .names {
     font-family: "Playfair Display", serif;
-    font-size: 30px;
-    color: #ffd369;
+    font-size: 32px;
+    color: #f5d27a;
     margin: 20px 0;
-    text-shadow: 0 0 10px rgba(255, 211, 105, 0.6);
 }
 
 h2 {
     font-family: "Playfair Display", serif;
-    color: #ffd369;
+    color: #f5d27a;
     font-weight: 500;
-    margin-top: 30px;
+    margin-top: 35px;
     margin-bottom: 10px;
-    text-shadow: 0 0 8px rgba(255, 211, 105, 0.5);
 }
 
 p {
     font-size: 15px;
-    line-height: 1.7;
+    line-height: 1.8;
     margin: 10px 0;
-    color: #f5d27a;
 }
 
-/* SHINING MAROON DIVIDER */
+/* DIVIDER */
 .divider {
     width: 60px;
-    height: 3px;
+    height: 2px;
+    background: linear-gradient(to right, transparent, #f5d27a, transparent);
     margin: 25px auto;
-    background: linear-gradient(90deg, #3b0000, #800000, #ff4d4d, #800000, #3b0000);
-    border-radius: 5px;
-    box-shadow: 0 0 8px rgba(255, 0, 0, 0.5), 0 0 15px rgba(128, 0, 0, 0.7);
 }
 
 /* MAP */
@@ -97,20 +93,19 @@ iframe {
     height: 260px;
     margin-top: 15px;
     border: 0;
-    filter: grayscale(100%) invert(90%);
 }
 
 /* LINK */
 a {
-    color: #ffd369;
+    color: #f5d27a;
     text-decoration: none;
-    border-bottom: 1px solid #ffd369;
+    border-bottom: 1px solid #f5d27a;
 }
 
 /* MOBILE */
 @media (max-width: 600px) {
     .names {
-        font-size: 24px;
+        font-size: 26px;
     }
 
     h2 {
@@ -122,15 +117,15 @@ a {
     }
 
     .container {
-        padding: 30px 15px;
+        padding: 40px 15px;
     }
 }
 
-/* ANIMATION */
+/* SCROLL ANIMATION (UPWARD + FADE) */
 .fade {
     opacity: 0;
-    transform: translateY(20px);
-    transition: all 1s ease;
+    transform: translateY(40px);
+    transition: all 1.2s ease;
 }
 
 .show {
@@ -144,19 +139,19 @@ a {
 
 <!-- MUSIC -->
 <audio id="bgMusic" loop>
-    <source src="wedding-music.mpeg" type="audio/mpeg">
+    <source src="homecoming-music.mpeg" type="audio/mpeg">
 </audio>
 
 <!-- COVER -->
 <div class="cover" id="cover">
-    <img src="Custom Card.jpg" alt="Homecoming Cover">
+    <img src="Homecoming Cover.jpg" alt="Homecoming Cover">
     <div class="cover-text">Tap to Open Invitation</div>
 </div>
 
 <!-- CONTENT -->
 <div class="container">
 
-    <p class="fade">With the blessings of our parents</p>
+    <p class="fade">With gratitude and joy</p>
 
     <div class="divider fade"></div>
 
@@ -165,28 +160,21 @@ a {
     </div>
 
     <p class="fade">
-        joyfully invite you to celebrate our homecoming
+        invite you to celebrate our homecoming
     </p>
 
     <div class="divider fade"></div>
 
-    <h2 class="fade">Our Story</h2>
-    <p class="fade">
-        In a world of countless souls, God chose us, 
-        and in that choice, our story quietly began.
-    </p>
-
-    <div class="divider fade"></div>
-
-    <h2 class="fade">Homecoming</h2>
+    <h2 class="fade">Homecoming Celebration</h2>
     <p class="fade">
         Wednesday, 20th May 2026 <br>
-        Evening Celebration
+        Evening Reception
     </p>
 
     <h2 class="fade">Venue</h2>
     <p class="fade">
-        Your Reception Location Here
+        Your Reception Hall Name <br>
+        Colombo
     </p>
 
     <div class="divider fade"></div>
@@ -204,7 +192,7 @@ a {
     </p>
 
     <p class="fade" style="margin-top:20px;">
-        We look forward to your presence
+        Your presence will complete our celebration
     </p>
 
 </div>
@@ -222,14 +210,14 @@ cover.addEventListener('click', () => {
     }, 1200);
 });
 
-/* SCROLL FADE */
+/* SCROLL ANIMATION */
 const observer = new IntersectionObserver(entries => {
     entries.forEach(entry => {
         if(entry.isIntersecting){
             entry.target.classList.add("show");
         }
     });
-});
+}, { threshold: 0.2 });
 
 document.querySelectorAll('.fade').forEach(el => {
     observer.observe(el);
