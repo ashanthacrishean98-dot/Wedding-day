@@ -3,298 +3,237 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
 <title>Homecoming Invitation</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500&family=Libre+Baskerville&display=swap" rel="stylesheet">
 
 <style>
+body {
+    margin: 0;
+    font-family: "Libre Baskerville", serif;
+    color: #f5d27a;
 
-body{
-    margin:0;
-    font-family:"Georgia",serif;
-    background:#000;
-    color:#c2a15f;
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    min-height:100vh;
+    /* Jet black elegant background */
+    background: radial-gradient(circle at center, #0a0a0a 0%, #000000 100%);
 }
 
-/* COVER SCREEN */
-
-.cover{
-    position:fixed;
-    inset:0;
-    background:#000;
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    cursor:pointer;
-    z-index:10;
+/* COVER */
+.cover {
+    position: fixed;
+    inset: 0;
+    background: #000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    z-index: 10;
 }
 
-.cover img{
-    width:100%;
-    height:100%;
-    object-fit:cover;
+.cover img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
 }
 
-.cover-text{
-    position:absolute;
-    bottom:40px;
-    color:#fff;
-    font-size:16px;
-    letter-spacing:1px;
-    background:rgba(0,0,0,0.5);
-    padding:12px 24px;
+.cover-text {
+    position: absolute;
+    bottom: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+    color: #f5d27a;
+    font-size: 14px;
+    background: rgba(0,0,0,0.5);
+    padding: 10px 20px;
+    border-radius: 25px;
+    border: 1px solid #f5d27a;
 }
 
-.cover.fade-out{
-    opacity:0;
-    transition:opacity 1.5s ease;
-    pointer-events:none;
+/* MAIN CONTENT */
+.container {
+    max-width: 600px;
+    margin: auto;
+    padding: 40px 20px;
+    text-align: center;
 }
 
-/* CARD */
-
-.card{
-    display:none;
-    max-width:600px;
-    background:#0b0b0b;
-    padding:40px 30px;
-    text-align:center;
-    border:1px solid #c2a15f;
-    box-shadow:0 0 60px rgba(194,161,95,0.25);
-    opacity:0;
-    animation:fadeIn 3s forwards,candleGlow 4s infinite alternate;
+/* TEXT STYLES */
+.names {
+    font-family: "Playfair Display", serif;
+    font-size: 30px;
+    color: #ffd369;
+    margin: 20px 0;
+    text-shadow: 0 0 10px rgba(255, 211, 105, 0.6);
 }
 
-@keyframes fadeIn{
-    0%{opacity:0;transform:scale(0.9);}
-    100%{opacity:1;transform:scale(1);}
+h2 {
+    font-family: "Playfair Display", serif;
+    color: #ffd369;
+    font-weight: 500;
+    margin-top: 30px;
+    margin-bottom: 10px;
+    text-shadow: 0 0 8px rgba(255, 211, 105, 0.5);
 }
 
-@keyframes candleGlow{
-    from{box-shadow:0 0 40px rgba(194,161,95,0.2);}
-    to{box-shadow:0 0 80px rgba(194,161,95,0.45);}
+p {
+    font-size: 15px;
+    line-height: 1.7;
+    margin: 10px 0;
+    color: #f5d27a;
 }
 
-.fade-section{
-    opacity:0;
-    transform:translateY(20px);
-    animation:sectionFade 2s forwards;
+/* SHINING MAROON DIVIDER */
+.divider {
+    width: 60px;
+    height: 3px;
+    margin: 25px auto;
+    background: linear-gradient(90deg, #3b0000, #800000, #ff4d4d, #800000, #3b0000);
+    border-radius: 5px;
+    box-shadow: 0 0 8px rgba(255, 0, 0, 0.5), 0 0 15px rgba(128, 0, 0, 0.7);
 }
 
-@keyframes sectionFade{
-    to{opacity:1;transform:translateY(0);}
+/* MAP */
+iframe {
+    width: 100%;
+    height: 260px;
+    margin-top: 15px;
+    border: 0;
+    filter: grayscale(100%) invert(90%);
 }
 
-/* GOLD DIVIDER */
-
-.divider{
-    width:80px;
-    height:2px;
-    background:linear-gradient(90deg,#c2a15f,#d4af37,#c2a15f);
-    margin:25px auto;
-    opacity:0;
-    animation:dividerFade 2s forwards,glowLine 3s infinite alternate;
+/* LINK */
+a {
+    color: #ffd369;
+    text-decoration: none;
+    border-bottom: 1px solid #ffd369;
 }
 
-@keyframes dividerFade{
-    to{opacity:1;}
-}
-
-@keyframes glowLine{
-    from{box-shadow:0 0 5px rgba(212,175,55,0.4);}
-    to{box-shadow:0 0 18px rgba(212,175,55,0.9);}
-}
-
-h2{
-    font-size:20px;
-    font-weight:normal;
-    margin:20px 0 10px;
-}
-
-p{
-    font-family:'Libre Baskerville',serif;
-    font-size:16px;
-    line-height:1.6;
-    margin:10px 0;
-}
-
-.names{
-    font-size:32px;
-    margin:20px 0;
-    font-weight:500;
-
-    background:linear-gradient(
-        90deg,
-        #caa74d,
-        #ffd700,
-        #fff2a6,
-        #ffd700,
-        #caa74d
-    );
-
-    background-size:300% auto;
-
-    -webkit-background-clip:text;
-    -webkit-text-fill-color:transparent;
-
-    animation:goldShine 4s linear infinite,
-              goldGlow 2s ease-in-out infinite alternate;
-
-.date{
-    font-family:'Libre Baskerville',serif;
-    font-size:18px;
-    letter-spacing:1px;
-    margin:20px 0;
-}
-
-.footer{
-    margin-top:30px;
-    font-size:14px;
-    color:#c2a15f;
-}
-
-a,
-a:visited,
-a:active,
-a:hover{
-    color:#d4af37;
-    text-decoration:none;
-    border-bottom:1px solid #c2a15f;
-}
-
-/* GOLD DUST BACKGROUND */
-
-.gold-dust{
-    position:fixed;
-    inset:0;
-    pointer-events:none;
-    background-image:radial-gradient(#d4af37 1px,transparent 1px);
-    background-size:60px 60px;
-    opacity:0.15;
-    animation:dustMove 40s linear infinite;
-}
-
-@keyframes dustMove{
-    from{transform:translateY(0);}
-    to{transform:translateY(-200px);}
-}
-@keyframes goldShine{
-    0%{background-position:0% center;}
-    100%{background-position:300% center;}
-}
-
-@keyframes goldGlow{
-    from{
-        text-shadow:
-        0 0 8px rgba(255,215,0,0.4),
-        0 0 16px rgba(255,215,0,0.4);
+/* MOBILE */
+@media (max-width: 600px) {
+    .names {
+        font-size: 24px;
     }
 
-    to{
-        text-shadow:
-        0 0 18px rgba(255,215,0,0.9),
-        0 0 35px rgba(255,215,0,0.8);
+    h2 {
+        font-size: 18px;
     }
+
+    p {
+        font-size: 14px;
+    }
+
+    .container {
+        padding: 30px 15px;
+    }
+}
+
+/* ANIMATION */
+.fade {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: all 1s ease;
+}
+
+.show {
+    opacity: 1;
+    transform: translateY(0);
 }
 </style>
 </head>
 
 <body>
 
-<!-- BACKGROUND MUSIC -->
-
+<!-- MUSIC -->
 <audio id="bgMusic" loop>
-<source src="wedding-music.mpeg" type="audio/mpeg">
+    <source src="wedding-music.mpeg" type="audio/mpeg">
 </audio>
 
 <!-- COVER -->
-
 <div class="cover" id="cover">
-<img src="Custom Card1.jpg" alt="Invitation Cover">
-<div class="cover-text">Tap to Open Invitation</div>
+    <img src="Custom Card.jpg" alt="Homecoming Cover">
+    <div class="cover-text">Tap to Open Invitation</div>
 </div>
 
-<!-- INVITATION CARD -->
+<!-- CONTENT -->
+<div class="container">
 
-<div class="card" id="invitationCard">
+    <p class="fade">With the blessings of our parents</p>
 
-<p class="fade-section" style="animation-delay:0.5s;">
-With the blessings of our parents
-</p>
+    <div class="divider fade"></div>
 
-<div class="divider" style="animation-delay:1s;"></div>
+    <div class="names fade">
+        Crishean <br>&amp;<br> Dinithi
+    </div>
 
-<div class="names fade-section" style="animation-delay:1.5s;">
-Crishean <br>&amp;<br> Dinithi
+    <p class="fade">
+        joyfully invite you to celebrate our homecoming
+    </p>
+
+    <div class="divider fade"></div>
+
+    <h2 class="fade">Our Story</h2>
+    <p class="fade">
+        In a world of countless souls, God chose us, 
+        and in that choice, our story quietly began.
+    </p>
+
+    <div class="divider fade"></div>
+
+    <h2 class="fade">Homecoming</h2>
+    <p class="fade">
+        Wednesday, 20th May 2026 <br>
+        Evening Celebration
+    </p>
+
+    <h2 class="fade">Venue</h2>
+    <p class="fade">
+        Your Reception Location Here
+    </p>
+
+    <div class="divider fade"></div>
+
+    <h2 class="fade">Location</h2>
+
+    <iframe 
+        src="https://www.google.com/maps?q=Colombo&output=embed">
+    </iframe>
+
+    <p class="fade">
+        <a href="#" target="_blank">
+            View on Google Maps
+        </a>
+    </p>
+
+    <p class="fade" style="margin-top:20px;">
+        We look forward to your presence
+    </p>
+
 </div>
-
-<p class="fade-section" style="animation-delay:2s;">
-joyfully invite you to celebrate our homecoming reception
-</p>
-
-<div class="divider" style="animation-delay:2.5s;"></div>
-
-<div class="date fade-section" style="animation-delay:3s;">
-Wednesday, 20th May 2026<br>
-at 7.00 in the evening
-</div>
-
-<h2 class="fade-section" style="animation-delay:3.5s;">
-Homecoming Reception
-</h2>
-
-<p class="fade-section" style="animation-delay:4s;">
-The Grand Ballroom<br>
-Colombo
-</p>
-
-<div class="divider" style="animation-delay:4.5s;"></div>
-
-<p class="fade-section" style="animation-delay:5s;">
-<a href="https://maps.app.goo.gl/X3GXXFcj5q9gLPss8" target="_blank">
-View Location on Google Maps
-</a>
-</p>
-
-<div class="footer fade-section" style="animation-delay:5.5s;">
-We look forward to celebrating with you
-</div>
-
-</div>
-
-<div class="gold-dust"></div>
 
 <script>
+const cover = document.getElementById('cover');
+const music = document.getElementById('bgMusic');
 
-const cover=document.getElementById('cover');
-const card=document.getElementById('invitationCard');
-const music=document.getElementById('bgMusic');
+cover.addEventListener('click', () => {
+    cover.style.opacity = "0";
 
-cover.addEventListener('click',()=>{
-
-cover.classList.add('fade-out');
-
-setTimeout(()=>{
-
-cover.style.display='none';
-card.style.display='block';
-
-music.play().catch(()=>{});
-
-document.querySelectorAll('.fade-section').forEach(el=>{
-const delay=el.style.animationDelay;
-el.style.animation=`sectionFade 2s forwards ${delay}`;
+    setTimeout(() => {
+        cover.style.display = "none";
+        music.play().catch(() => {});
+    }, 1200);
 });
 
-},1200);
-
+/* SCROLL FADE */
+const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+        if(entry.isIntersecting){
+            entry.target.classList.add("show");
+        }
+    });
 });
 
+document.querySelectorAll('.fade').forEach(el => {
+    observer.observe(el);
+});
 </script>
 
 </body>
